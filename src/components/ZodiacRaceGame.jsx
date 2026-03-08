@@ -167,8 +167,8 @@ const ZodiacRaceGame = ({ userZodiac, onClose }) => {
   // Get winner message
   const getWinnerMessage = () => {
     if (!winner) return '';
-    const luckyMsg = winner === userZodiac ? " Your Zodiac Win the Race! You are Lucky Today!" : "";
-    return `🏆 The race has finished!${luckyMsg}`;
+    if (winner === userZodiac) return "🏆 Your Zodiac Win the Race! You are Lucky Today!";
+    return `🏆 ${winner} Zodiac Win, Better Luck Next Time`;
   };
 
   return (
@@ -259,23 +259,11 @@ const ZodiacRaceGame = ({ userZodiac, onClose }) => {
               })}
             </div>
           </div>
-
-          {/* Click counter and instructions */}
-          {raceStarted && !raceFinished && (
-            <div className="mt-4 text-center">
-              <div className="text-yellow-300 text-sm sm:text-base font-medium">
-                Clicks: {clickCount}
-              </div>
-              <div className="text-gray-400 text-xs sm:text-sm mt-1">
-                Click or tap to move your {userZodiac}!
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Winner Message */}
         {raceFinished && winner && (
-          <div className="bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg sm:rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
+          <div className="bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-500/30 rounded-lg sm:rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 max-w-2xl mx-auto">
             <div className="text-center">
               <div className="text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-4 font-bold text-yellow-300">
                 {getWinnerMessage()}
@@ -296,14 +284,6 @@ const ZodiacRaceGame = ({ userZodiac, onClose }) => {
             >
               🏁 Start Race
             </button>
-          )}
-
-          {raceStarted && !raceFinished && (
-            <div className="flex-1 text-center py-3">
-              <div className="text-yellow-400 font-bold text-base sm:text-lg animate-pulse">
-                🖱️ Tap to move your {userZodiac}!
-              </div>
-            </div>
           )}
 
           {(raceFinished || raceStarted) && (
