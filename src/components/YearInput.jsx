@@ -33,9 +33,9 @@ export default function YearInput({ onYearSubmit }) {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto mb-12">
+    <div className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto">
       {/* Elevated Card Container */}
-      <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl shadow-2xl backdrop-blur-sm border border-gray-700 p-8 md:p-10">
+      <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl sm:rounded-3xl shadow-2xl backdrop-blur-sm border border-gray-700 p-6 sm:p-8 md:p-10 lg:p-12">
         <div className="flex flex-col items-center space-y-8">
           {/* Slider Section */}
           <div className="w-full">
@@ -80,7 +80,7 @@ export default function YearInput({ onYearSubmit }) {
               type="submit"
               className="w-full px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl active:scale-95"
             >
-              Reveal My Zodiac ✨
+              Reveal My Zodiac
             </button>
           </form>
         </div>
