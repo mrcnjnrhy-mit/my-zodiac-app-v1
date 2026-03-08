@@ -1,12 +1,12 @@
 // src/components/ZodiacCard.jsx
 import { useRef, useEffect, useState } from 'react';
 import { ELEMENT_COLORS } from '../utils/zodiacData.js';
-import ZodiacReflexGame from './ZodiacReflexGame.jsx';
+import ZodiacRaceGame from './ZodiacRaceGame.jsx';
 
 export default function ZodiacCard({ zodiac }) {
   const prevAnimalRef = useRef(null);
   const iconRef = useRef(null);
-  const [showGame, setShowGame] = useState(false);
+  const [showRaceGame, setShowRaceGame] = useState(false);
 
   useEffect(() => {
     if (zodiac && zodiac.animal !== prevAnimalRef.current && iconRef.current) {
@@ -89,19 +89,22 @@ export default function ZodiacCard({ zodiac }) {
         </div>
       </div>
 
-      {/* Play Zodiac Reflex Challenge Button */}
-      <div className="flex justify-center mt-8 sm:mt-10 md:mt-12 card-fade-in w-full" style={{animationDelay: '0.3s'}}>
+      {/* Mini Game Section */}
+      <div className="mt-8 sm:mt-12 text-center">
         <button
-          onClick={() => setShowGame(true)}
-          className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:from-yellow-300 hover:via-yellow-400 hover:to-yellow-500 text-gray-900 font-bold text-lg sm:text-xl md:text-2xl rounded-xl sm:rounded-2xl transition-all transform hover:scale-105 active:scale-95 shadow-xl border-2 border-yellow-200/50 hover:border-yellow-100 hover:shadow-2xl"
+          onClick={() => setShowRaceGame(true)}
+          className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-300 hover:to-yellow-500 text-black font-bold rounded-xl transition-all transform hover:scale-105 active:scale-95 shadow-lg text-lg"
         >
-          Play Zodiac Reflex Challenge ⚡🎯
+          🏁 Play Zodiac Dash: The Celestial Race
         </button>
       </div>
 
-      {/* Mini Game Modal */}
-      {showGame && (
-        <ZodiacReflexGame animal={zodiac.animal} onClose={() => setShowGame(false)} />
+      {/* Race Game Modal */}
+      {showRaceGame && (
+        <ZodiacRaceGame
+          userZodiac={animal}
+          onClose={() => setShowRaceGame(false)}
+        />
       )}
     </div>
   );
